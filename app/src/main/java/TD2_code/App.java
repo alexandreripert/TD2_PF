@@ -3,12 +3,29 @@
  */
 package TD2_code;
 
+import java.util.function.Predicate;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
+
+
+
     public static void main(String[] args) {
+
+    Client client = new Client(150, 120.0);
+
+        
+    Predicate<Integer> tropPetit = taille -> taille < 100;
+    Predicate<Integer> tropGrand = taille -> taille > 200;
+    Predicate<Integer> tailleIncorrecte = tropPetit.or(tropGrand); 
+    Predicate<Integer> tailleCorrecte = tailleIncorrecte.negate(); 
+    Predicate<Double> tropLourd = poids -> poids > 150.0;
+    Predicate<Double> poidsCorrecte = tropLourd.negate(); 
+
         System.out.println(new App().getGreeting());
+
     }
 }
